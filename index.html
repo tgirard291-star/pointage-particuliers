@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-title" content="Pointage"/>
-<title>Pointage Heures</title>
+<title>Pointage Particuliers</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f4f0;color:#2c2c2a;min-height:100vh}
@@ -55,7 +55,7 @@ tr:last-child td{border-bottom:none}
 </head>
 <body>
 <div class="header">
-  <div class="header-title">Pointage Heures</div>
+  <div class="header-title">Pointage Particuliers</div>
   <div class="header-sub" id="header-date"></div>
 </div>
 <div id="admin-bar" class="admin-bar" style="display:none">MODE ADMINISTRATEUR</div>
@@ -160,8 +160,8 @@ tr:last-child td{border-bottom:none}
 </div>
 
 <script>
-const URL_BASE = "https://xxosvhsuuezkhemkmiga.supabase.co/rest/v1/pointage";
-const KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh4b3N2aHN1dWV6a2hlbWttaWdhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4ODc3NzIsImV4cCI6MjA5MjQ2Mzc3Mn0.uaO8PMZxBd9-uuytO5rgE-j0kN6uwtMIBDeTnZk8j9w";
+const URL_BASE = "https://qtpzxjxmgpohmealzjrp.supabase.co/rest/v1/pointage";
+const KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0cHp4anhtZ3BvaG1lYWx6anJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxMzM3OTIsImV4cCI6MjA5MzcwOTc5Mn0.EOviAI_KMlbCIZPN0K_x--P-zzo7nD1HvY9JcJtklmo";
 const H = {"Content-Type":"application/json","apikey":KEY,"Authorization":"Bearer "+KEY};
 const isAdmin = window.location.search.includes('admin');
 
@@ -171,7 +171,7 @@ let rows = [];
 
 async function loadCfg(){
   try{
-    const r = await fetch("https://xxosvhsuuezkhemkmiga.supabase.co/rest/v1/config?select=*", {headers:H});
+    const r = await fetch("https://qtpzxjxmgpohmealzjrp.supabase.co/rest/v1/config?select=*", {headers:H});
     const json = await r.json();
     if(Array.isArray(json)){
       json.forEach(row => {
@@ -184,7 +184,7 @@ async function loadCfg(){
 
 async function saveCfg(cle){
   const valeur = JSON.stringify(cfg[cle]);
-  await fetch("https://xxosvhsuuezkhemkmiga.supabase.co/rest/v1/config?cle=eq."+cle, {
+  await fetch("https://qtpzxjxmgpohmealzjrp.supabase.co/rest/v1/config?cle=eq."+cle, {
     method:'PATCH',
     headers:{...H,'Prefer':'return=minimal'},
     body: JSON.stringify({valeur})
